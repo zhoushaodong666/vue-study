@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">{{content}}</div>
+
+    <!--vue只接管了id为app的dom下的所有内容
+    该div不在id为app的范围内 所以原封不动的输出
+    -->
+    <div>{{content}}</div>
+<script>
+    //原生写法
+    // var dom = document.getElementById("app")
+    // dom.innerHTML = "hello world"
+
+    //定时器
+    // setTimeout(function () {
+    //     dom.innerHTML = "bye world"
+    // },2000)
+
+
+    //Vue写法
+    var app = new Vue({
+        //该实例负责id为app的dom标签的所有内容
+        el:"#app",
+        //定义一些数据
+        data:{
+            content:"hello world"
+        }
+    })
+
+    setTimeout(function () {
+        //实例名.$data.变量名来获取变量
+        //数据改变视图改变
+        //vue不需要关注dom操作
+        app.$data.content = "bye world"
+    },2000)
+
+
+
+</script>
+</body>
+</html>
