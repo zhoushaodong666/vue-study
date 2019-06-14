@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="app">
+        <!--
+            v-model 和一个变量进行绑定
+        -->
+        <input type="text" v-model="inputValue">
+        <!--
+        v-on 绑定事件
+        click为点击事件
+         handleBtnClick为方法名
+        -->
+        <button v-on:click="handleBtnClick">提交</button>
+        <ul>
+            <li v-for="item in todolist">{{item}}</li>
+
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                todolist:[],
+                inputValue:""
+            },
+            methods:{
+                handleBtnClick:function () {
+                    //this.inputValue vue会自动到data下找inputValue的变量
+                    //alert(this.inputValue)
+                    this.todolist.push(this.inputValue)
+                    this.inputValue=""
+                },
+            }
+        })
+    </script>
+</body>
+</html>
