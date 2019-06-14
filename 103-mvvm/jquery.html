@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <title>TodoList Jquery</title>
 </head>
 <body>
+<div>
+    <input type="text" id="input">
+    <button id="btn">提交</button>
+    <ul id="list"></ul>
+</div>
+
+<script>
+
+	function Page() {
+
+	}
+
+	$.extend(Page.prototype, {
+		init: function () {
+			this.bindEvents()
+		},
+		bindEvents: function () {
+			var btn = $("#btn");
+			btn.on("click", $.proxy(this.handleBtnClick,this))
+		},
+        handleBtnClick:function () {
+			var inputElem = $("#input");
+			var inputValue = inputElem.val();
+            var ulElem = $("#list");
+            ulElem.append("<li>"+inputValue+"</li>");
+	        inputElem.val("");
+        }
+	});
+
+    var page  =new Page();
+	page.init()
+</script>
 
 </body>
 </html>
