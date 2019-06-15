@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/vue.js"></script>
+    <title>前端组件化</title>
+</head>
+<body>
+
+<div id="app">
+
+    <input type="text" v-model="inputValue">
+
+    <button @Click="handleBtnClick">提交</button>
+    <ul>
+        <!--<li v-for="item in todolist">{{item}}</li>-->
+
+        <!--
+            组件名称为TodoItem
+            使用时大驼峰之间要用-分开 标签名用小写
+        -->
+        <todo-item v-bind:content="item"
+                   v-for="item in todolist">
+
+        </todo-item>
+    </ul>
+</div>
+
+<script>
+	//全局组件
+	// Vue.component("TodoItem", {
+	// 	//子组件 使用props 接收外部父组件传入的值
+	// 	props: ["content"],
+	// 	template: "<li>{{content}}</li>"
+	// })
+
+    //局部组件
+    var TodoItem = {
+    	props:["content"],
+        template:"<li>{{content}}</li>"
+    };
+
+	var app = new Vue({
+		el: "#app",
+        //将局部组件注册到实例中
+        components:{
+		TodoItem:TodoItem
+        },
+		data: {
+			todolist: [],
+			inputValue: ""
+		},
+		methods: {
+			handleBtnClick: function () {
+
+				this.todolist.push(this.inputValue)
+				this.inputValue = ""
+			},
+		}
+	})
+</script>
+</body>
+</html>
