@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue的条件渲染</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <!-- 1 -->
+    <!-- 节点被移除 -->
+    <!--<div v-if="show" data-test="v-if">{{message}}</div>-->
+    <!-- 节点仍然存在 只是被隐藏了 -->
+    <!--<div v-show="show" data-test="v-show">{{message}}</div>-->
+
+    <!--
+        2
+        if else同时存在时 要紧贴在一起写 不然浏览器会报错
+    -->
+    <!--<div v-if="show" >{{message}}</div>-->
+    <!--&lt;!&ndash;<span>test</span>&ndash;&gt;-->
+    <!--<div v-else>Bye World</div>-->
+
+    <!--<div v-if="show" >This is A</div>-->
+    <!--<div v-else-if="show==='b'" >This is B</div>-->
+    <!--<div v-else>This is Others</div>-->
+
+    <!--
+        当页面上存在相同的元素时，Vue会尝试去复用原来的元素
+        当加入key值时 Vue会认为是不同的元素 就不会去尝试复用了
+    -->
+    <div v-if="show" >
+        用户名：<input key="username"/>
+    </div>
+
+    <div v-else>
+        邮箱名：<input key="password"/>
+    </div>
+
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+        	//1 3
+        	show:false,
+            //2
+            //show:"a",
+        	message:"Hello World"
+        }
+    })
+</script>
+
+</body>
+</html>
