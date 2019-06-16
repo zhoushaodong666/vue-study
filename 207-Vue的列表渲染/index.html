@@ -8,13 +8,59 @@
 <body>
 
 <div id="app">
+    <!--<div v-for="(item,index) of list"-->
+    <!--:key="item.id">{{item.text}}&#45;&#45;&#45;&#45;{{index}}-->
+    <!--</div>-->
+    <!--
+        遍历数组
+    -->
+    <!--<template v-for="(item,index) of list">-->
+    <!--<div>-->
+    <!--{{item.text}}&#45;&#45;&#45;&#45;{{index}}-->
+    <!--</div>-->
+    <!--<span>-->
+    <!--{{item.text}}-->
+    <!--</span>-->
+    <!--</template>-->
+
+    <!--
+        遍历对象
+        改变对象的内容 可以改变对象的引用 重新赋值一个对象
+    -->
+    <div v-for="(item,key,index) of userInfo">
+        <div>
+          {{key}}---{{item}}---{{index}}
+        </div>
+
+    </div>
 
 </div>
 
 <script>
-    var vm = new Vue({
+	//使用vue提供的方法操作数组元素
+	//push pop shift unshift splice sort reverse
 
-    })
+	//改变引用
+	//给list重新赋值 改变引用从而改变页面数据
+	var vm = new Vue({
+		el: "#app",
+		data: {
+			list: [
+				{
+					id: "001",
+					text: "hello"
+				}, {
+					id: "002",
+					text: "boy"
+				}
+			],
+            userInfo:{
+				name:"小白",
+                age:18,
+                sex:"男"
+            }
+		}
+	})
 </script>
 
 </body>
