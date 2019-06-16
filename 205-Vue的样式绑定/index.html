@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/vue.js"></script>
+    <title>Vue的样式绑定</title>
+
+    <!--<style>-->
+        <!--.activated {-->
+            <!--color: red;-->
+        <!--}-->
+    <!--</style>-->
+
+
+</head>
+<body>
+<div id="app">
+    <!-- 第1种样式绑定 -->
+    <!--<div @click="handleDivClick"-->
+         <!--:class="{activated:isActivated}"-->
+    <!--&gt;Hello world-->
+    <!--</div>-->
+
+    <!-- 第2种样式绑定 -->
+    <!--<div @click="handleDivClick"-->
+    <!--:class="[activated]"-->
+    <!--&gt;Hello world-->
+    <!--</div>-->
+
+    <!-- 第3种样式绑定 -->
+
+    <!--<div :style="styleObj" @click="handleDivClick">-->
+        <!--Hello world-->
+    <!--</div>-->
+
+    <div :style="[styleObj,{fontSize:'30px'}]" @click="handleDivClick">
+        Hello world
+    </div>
+</div>
+
+<script>
+	var vm = new Vue({
+		el: "#app",
+		data: {
+			//1
+			// isActivated: false
+
+            //2
+            //activated:""
+
+            //3
+            styleObj:{
+            	color:"black"
+            }
+		},
+		methods: {
+			handleDivClick: function () {
+				//1
+				// this.isActivated = !this.isActivated
+
+                //2
+                // if(this.activated === "activated"){
+	            //     this.activated = ""
+                // }else{
+	            //     this.activated = "activated"
+                // }
+
+                // this.activated= this.activated==="activated"?
+                //     "":"activated"
+
+                //3
+                this.styleObj.color = this.styleObj.color === "black"?
+                "red":"black";
+			}
+		}
+	})
+
+</script>
+</body>
+</html>
