@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件使用中的细节点</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <table>
+        <tbody>
+        <!--
+            直接输出row row在tbody外面 不在tbody里面
+        -->
+        <!--<row></row>-->
+        <!--
+            使用is属性 既保证组件的正常使用 也符合H5的编码规范
+        -->
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+    //全局组件
+	Vue.component("row", {
+		//错误写法
+		// data:{
+		// 	content:"this is a row"
+        // },
+
+        //组件中的data 必须返回一个函数
+        data:function(){
+            return{
+            	content:"this is a row"
+            }
+        },
+		template: "<tr><td>{{content}}</td></tr>"
+	});
+
+	var vm = new Vue({
+        el:"#root"
+    })
+</script>
+
+</body>
+</html>
