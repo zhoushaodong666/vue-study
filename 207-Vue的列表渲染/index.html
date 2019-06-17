@@ -25,11 +25,28 @@
 
     <!--
         遍历对象
-        改变对象的内容 可以改变对象的引用 重新赋值一个对象
+        改变对象的内容
+        1.可以改变对象的引用 重新赋值一个对象
+        2.通过Vue.set() Vue.set(vm.userInfo,"address","北京")
+           通过Vue实例
+        vm.$set(vm.userInfo,"address","beijing")
     -->
-    <div v-for="(item,key,index) of userInfo">
+    <!--<div v-for="(item,key,index) of userInfo">-->
+        <!--<div>-->
+          <!--{{key}}-&#45;&#45;{{item}}-&#45;&#45;{{index}}-->
+        <!--</div>-->
+
+    <!--</div>-->
+
+    <!--
+        改变数组元素
+        Vue.set(vm.studentId,1,5)
+        vm.$set(vm.studentId,2,10)
+
+    -->
+    <div v-for="(item,key,index) of studentId">
         <div>
-          {{key}}---{{item}}---{{index}}
+          {{item}}
         </div>
 
     </div>
@@ -58,7 +75,8 @@
 				name:"小白",
                 age:18,
                 sex:"男"
-            }
+            },
+            studentId:[1,2,3,4]
 		}
 	})
 </script>
