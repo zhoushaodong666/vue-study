@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件与v-once指令</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+
+    <child-one v-if="type==='child-one'"></child-one>
+    <child-two v-if="type==='child-two'"></child-two>
+    <!--
+        动态组件
+    -->
+    <!--<component  :is="type"></component>-->
+    <button @click="handleBtnClick">change</button>
+</div>
+
+<script>
+
+	Vue.component("child-one", {
+		//v-once 首次渲染后 数据改变也不在重新渲染 视为静态内容 有利于性能优化
+		template: "<div v-once>child-one</div>"
+	});
+
+	Vue.component("child-two", {
+		template: "<div v-once>child-two</div>"
+	});
+
+	var vm = new Vue({
+		el: "#root",
+		data: {
+			type: "child-one"
+		},
+		methods: {
+			handleBtnClick: function () {
+				this.type = this.type === 'child-one' ? 'child-two' : 'child-one'
+			}
+		}
+	})
+</script>
+
+</body>
+</html>
