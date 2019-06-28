@@ -52,9 +52,13 @@
 </head>
 <body>
 <div id="root">
+    <!--
+    enter-active-class="自定义类名"
+    enter-active-class="自定义类名"
+    -->
     <transition
             enter-active-class="animated swing"
-            leave-active-class="animated shake">
+            enter-active-class="animated shake">
         <div v-if="show">hello world</div>
     </transition>
 
