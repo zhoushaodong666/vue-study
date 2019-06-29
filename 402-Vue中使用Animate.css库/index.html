@@ -4,8 +4,80 @@
     <meta charset="UTF-8">
     <title>Vue中使用Animate.css库</title>
     <script src="../js/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+
+    <style>
+        /*@keyframes bounce-in {*/
+        /*0%{*/
+        /*transform: scale(0);*/
+        /*}*/
+
+        /*50%{*/
+        /*transform: scale(1.5);*/
+        /*}*/
+
+        /*100%{*/
+        /*transform: scale(1);*/
+        /*}*/
+        /*}*/
+        /*
+        vue自带名称
+        */
+        /*.fade-enter-active{*/
+        /*transform-origin: left center;*/
+        /*animation: bounce-in 1s;*/
+        /*}*/
+
+        /*.fade-leave-active {*/
+        /*transform-origin: left center;*/
+        /*animation: bounce-in 1s reverse;*/
+        /*}*/
+
+
+        /*
+        自定义名称 enter-active-class  leave-active-class
+        */
+        /*.active{*/
+        /*transform-origin: left center;*/
+        /*animation: bounce-in 1s;*/
+        /*}*/
+
+        /*.leave {*/
+        /*transform-origin: left center;*/
+        /*animation: bounce-in 1s reverse;*/
+        /*}*/
+
+
+    </style>
 </head>
 <body>
+<div id="root">
+    <!--
+    enter-active-class="自定义类名"
+    enter-active-class="自定义类名"
+    -->
+    <transition
+            enter-active-class="animated swing"
+            enter-active-class="animated shake">
+        <div v-if="show">hello world</div>
+    </transition>
 
+    <button @click="handleClick">切换</button>
+</div>
+
+<script>
+	var vm = new Vue({
+		el: "#root",
+		data: {
+			show: true
+		},
+		methods: {
+			handleClick: function () {
+				this.show = !this.show
+			}
+		}
+	})
+
+</script>
 </body>
 </html>
